@@ -85,15 +85,11 @@ This documentation has two possible routes to follow.
 
 - Solidity Language is not supported in VSCode by default. So you won't get any suggestion while coding and code will be displayed as plain white text. To make solidity recognizable and supported in VSCode, we need to install extension in VSCode named Solidity by Juan Blanco.
 
-- To install solidity extention, goto Extensions Tab from right bar and then search for following keyword `JuanBlanco.solidity` which will bring matching result for that ID. Install first one named 'solidity' by 'Juan Blanco'
+- To install solidity extention, goto Extensions Tab from right bar and then search for following keyword `JuanBlanco.solidity` which will bring matching result for that ID. Install first result named 'solidity' by 'Juan Blanco'
 
 - In modern Windows (which comes with Powershell) truffle may not run using VSCode's default Windows Terminal due to enforced Restriction Policy to execute .ps1 files. In that case running truffle may result in PSSecurityException error. Switching default terminal from Powershell to either Command Prompt or git bash will help here.
 
-# How to Use truffle?
-
-- This section wll give extremely basic overview on How to deploy and interact with contract using truffle inside Local Machine
-
-### Understanding Truffle Project Structure
+# Understanding Truffle Project Structure
 
 - After executing `truffle init` inside newly created folder, we will get following important directories and files
 
@@ -104,35 +100,42 @@ This documentation has two possible routes to follow.
 
 - We will understand use of each directory or file inshort one by one.
 
-#### contracts
+### contracts
 
 `contracts` folder is folder which will contain all contracts writtent in solidity language (`.sol`).
+Truffle will compile all solidity files which is placed inside this folder when we instruct truffle to compile.
 
-Truffle will compile all solidity files which is placed inside this folder when we instruct truffle to compile
+### migrations
 
-#### migrations
-
-`migrations` folder is folder where we provide instruction to truffle on how to deploy contract and what to deploy from all our compiled contracts.
-
-All files inside this will let us customize deployment of contracts from all our compiled contracts.
-
+`migrations` is folder where we provide instruction to truffle on how to deploy contract and what to deploy from all our compiled contracts.
+All files inside this will let us customize deployment of contracts from all our compiled contracts and what to do after deploying contracts.
+So apparently we can do anything with our contract as we can get access to contract instance and after that we can perform transactions and calls.
 All files inside this folder will be written in JavaScript Language.
 
 [How to write migration file?](#truffle-migration-file)
 
-#### test
+### test
 
 `test` folder will contain all the test files which can perform several tests on contracts.
 
-#### truffle-config.js
+### truffle-config.js
 
 This file is very important file. which will contain all the configuration we can change or add.
-
 This will be also writtent in JavaScript and using this file, we can configure various networks, change solidity compiler version etc.
 
 [How to use truffle-config.js?](#use-truffle-configjs)
 
-### Truffle Migration File
+# How to Use truffle?
+
+- This section wll give extremely basic overview on How to deploy and interact with contract using truffle inside Local Machine
+
+### Truffle Migration Files
+
+- These files are located inside migrations folder.
+
+- These files will get executed if we run `truffle migrate`.
+
+- These file is also makes possible to interect with contract using JavaScript.
 
 - Here is basic code of migration file which deploys contract named SimpleStorage inside specified network.
 ```
@@ -157,9 +160,15 @@ module.exports = function(deployer) {
 
 - Naming Convention of truffle file must be followed in order to make migration work.
 
-`1_SimpleStorage.js` -> `<index>_<identifier>.js`
+  `1_SimpleStorage.js` -> `<index>_<identifier>.js`
 
 - Name must start with number and number of all migration files should be unique. except that we can choose any identifier and that's completely upto you.
+
+- Above code is just example and actually we can even interect with contract which means we can perform transactions using contract or call function.
+
+- Explore file named `1_SimpleStorage.js` inside this repo. This file is not only deploying contract, but also performing transactions and calling function from contract.
+
+- Explore `SimpleStorage.sol` inside contracts folder to see all available interecations with contract.
 
 That's basic info on how to configure migration file.
 
@@ -189,6 +198,12 @@ The `development` name is special - truffle uses it by default.
 
 if it's defined here and no other network is specified at the command line. You should run a client (like ganache, geth, or parity) in a separate terminal tab if you use this network and you must also set the `host`, `port` and `network_id`
 
+Another network configuration we are gonna use is `dashboard` configuration.
+
+Truffle provides us way to make interection possible using Test networks or real networks using Truffle Dashboard and to use truffle dashboard, dashboard config is necessary to setup here.
+
+Explore `truffle-config.js` file of this repo to get more info.
+
 ```
 networks: {
     development: {
@@ -200,16 +215,11 @@ networks: {
     dashboard: {
       port: 24012
     },
-    goerli: {
-      provider: () => new HDWalletProvider(mnemonic, infuraProjectId),
-      network_id: 5,       // Goerli's id
-      chain_id: 5
-    }
   }
 ```
 ### Compile all solidity files
 
-Truffle will compile all solidity files inside contract if we run either `truffle dev` or `truffle migrate`
+Truffle will compile all solidity files inside contract if we run `truffle migrate`
 
 ### Deploy Contract in specific Network
 
@@ -219,7 +229,14 @@ Only executing `truffle migrate` will deploy contract inside development network
 
 ### Interect with deployed contract
 
-After migrating contract to specific network we can interact contract
+- As we seen in [Truffle Migration File Section](#truffle-migration-files) We can write code to execute transactions and execute calls inside migration files only.
+
+- But As transaction requires signature generation of transaction creator and also access to specific EVM Network to insert contracts on, we may need to perform additional stpes depending on which network config we are using to deploy our contract.
+
+#### Using Truffle's Fake Network (`truffle migrate` || `truffle migrate --network development`)
+
+- If We execute `truffle migrate` without specifiying network config, truffle will deploy contract using `development` configs.
+- In this network config we don't need any additional setup as truffle is generating fake blockchain network and thus truffle will fake signature generation for all trasactions.
 
 # Useful Docs
 
