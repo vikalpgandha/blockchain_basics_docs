@@ -128,14 +128,37 @@ This will be writtent in JavaScript and using this file, we can configure variou
 
 - These files will get executed if we run `truffle migrate` and it makes possible to interect with contract using JavaScript.
 
+- We can divide code of migration files into 2 parts.
+
+1. Part which deploys contracts into Netqork
+2. Another part which will come after deployment and that part will interect with cotracts by executing transaction and other calls.
+
+```
+const MyContract = artifacts.require("SimpleStorage");
+module.exports = function(deployer) {
+  deployer.deploy(MyContract);
+
+  < -- Code which interects with contract below -- >
+
+  const instance = await MyContract.deployed();
+  await instance.addPerson('Vikalp', 85)
+  await instance.store(95)
+  const data = await instance.retrieve();
+  console.log('data',data.words[0]);
+};
+```
+
+#### Cotract Deployment Part
+
 - Here is basic code of migration file which deploys contract named SimpleStorage inside specified network.
 
   ```
-  var MyContract = artifacts.require("SimpleStorage");
+  const MyContract = artifacts.require("SimpleStorage");
 
   module.exports = function(deployer) {
-    // deployment steps
     deployer.deploy(MyContract);
+
+    < -- Contract Interaction code -- >
   };
   ```
 
@@ -151,19 +174,45 @@ This will be writtent in JavaScript and using this file, we can configure variou
 
 - truffle will provide `deployer` method as argument and using that we can deploy contract stored inside variable `deployer.deploy(MyContract)`
 
-- Naming Convention of truffle file must be followed in order to make migration work.
+#### Contract Interaction Part
+
+- Here is part of code which is interating with deployed contract stored inside `MyContract` variable.
+
+  ```
+  let MyContract;
+
+  < -- Contract Deployment Instrouctions -- >
+
+  module.exports = async function(deployer) {
+    deployer.deploy(MyContract);  --> Deploys the contract
+
+    const instance = await MyContract.deployed();
+    await instance.addPerson('Vikalp', 85)
+    await instance.store(95)
+    const data = await instance.retrieve();
+    console.log('data',data.words[0]);
+  };
+  ```
+
+- Line `const instance = await MyContract.deployed()` is creating and storing instance of deployed `MyContract` inside specified network. This line will give you the access of contract inside blockchain network.
+
+- Now you can use this instance to interect with contract. for example, line `await instance.addPerson('Vikalp', 85)` is executing `addPerson` function with 2 arguments ('Vikalp', 85). explore `SimpleStorage.sol` file inside this repo to get information on what this function is doing.
+
+- Next line is also doing same task as above but instead of executing `addPerson` it executes `store` function.
+
+- We can also get access to returned data by using assignement as done in line `const data = await instance.retrieve()`
+
+- One thing to remember is that regradless of nature of function (Transaction or Normal Function) you will not find any difference in execution of any type of function.
+
+  That's basic explenation on how we can write and use migration file.
+
+- Naming Convention of truffle migration file must be followed in order to make migration work.
 
   `1_SimpleStorage.js` -> `<index>_<identifier>.js`
 
 - Name must start with number and number of all migration files should be unique. except that we can choose any identifier and that's completely upto you.
 
-- Above code is just example and actually we can even interect with contract which means we can perform transactions using contract or call function.
-
-- Explore file named `1_SimpleStorage.js` inside this repo. This file is not only deploying contract, but also performing transactions and calling function from contract.
-
 - Explore `SimpleStorage.sol` inside contracts folder to see all available interecations with contract.
-
-  That's basic info on how to configure migration file.
 
 ### Use truffle-config.js
 
@@ -282,9 +331,9 @@ Only executing `truffle migrate` will deploy contract inside development network
 
 - You can add multiple `truffle-config.js` files in same workspace i.e. You can link your multiple projects with same workspace.
 
-- After linking truffle projects and naming project. click on `Save Workspace`.
+- After linking truffle projects and naming workspace. click on `Save Workspace`.
 
-- This will create local blockchain network with 10 fake accounts with various debugging tools.
+- This will create local blockchain network with 10 fake accounts and various debugging tools.
 
 - Now you can deploy your linked truffle project inside this network by simply doing `truffle migrate`.
 
