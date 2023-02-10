@@ -130,7 +130,7 @@ This will be writtent in JavaScript and using this file, we can configure variou
 
 - We can divide code of migration files into 2 parts.
 
-1. Part which deploys contracts into Netqork
+1. Part which deploys contracts into Network.
 2. Another part which will come after deployment and that part will interect with cotracts by executing transaction and other calls.
 
 ```
