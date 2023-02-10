@@ -130,14 +130,14 @@ This will be writtent in JavaScript and using this file, we can configure variou
 
 - Here is basic code of migration file which deploys contract named SimpleStorage inside specified network.
 
-```
-var MyContract = artifacts.require("SimpleStorage");
+  ```
+  var MyContract = artifacts.require("SimpleStorage");
 
-module.exports = function(deployer) {
-  // deployment steps
-  deployer.deploy(MyContract);
-};
-```
+  module.exports = function(deployer) {
+    // deployment steps
+    deployer.deploy(MyContract);
+  };
+  ```
 
 - Here we are creating variable named `MyContract` which will be of type contract and then we will assign `artifacts.require('SimpleStorage')` to that variable.
 
@@ -163,7 +163,7 @@ module.exports = function(deployer) {
 
 - Explore `SimpleStorage.sol` inside contracts folder to see all available interecations with contract.
 
-That's basic info on how to configure migration file.
+  That's basic info on how to configure migration file.
 
 ### Use truffle-config.js
 
@@ -202,19 +202,19 @@ compilers: {
 
 - Explore `truffle-config.js` file of this repo to get more info.
 
-```
-networks: {
-    development: {
-      host: "127.0.0.1",
-      port: 7545,
-      network_id: 5777
-    },
+  ```
+  networks: {
+      development: {
+        host: "127.0.0.1",
+        port: 7545,
+        network_id: 5777
+      },
 
-    dashboard: {
-      port: 24012
-    },
-  }
-```
+      dashboard: {
+        port: 24012
+      },
+    }
+  ```
 
 - For more and indepht information on how to use this config file, [go here](https://trufflesuite.com/docs/truffle/reference/configuration/)
 
@@ -224,7 +224,8 @@ Truffle will compile all solidity files from contracts folder if you run `truffl
 
 ### Deploy Contract in Specific Network
 
-After defining network inside `truffle-config.js` you can deploy that contract inside that network like this. `truffle migrate --network <name of network>`
+After defining network inside `truffle-config.js` you can deploy that contract inside that network like this
+`truffle migrate --network <name of network>`
 
 Only executing `truffle migrate` will deploy contract inside development network.
 
@@ -237,7 +238,14 @@ Only executing `truffle migrate` will deploy contract inside development network
 #### Using Truffle's Fake Ganache Network (`truffle migrate` || `truffle migrate --network development`)
 
 - If We execute `truffle migrate` without specifiying network config, truffle will deploy contract using `development` configs.
-- In this network config we don't need any additional setup as truffle itself is generating fake blockchain network and thus truffle will fake signature generation for all trasactions.
+
+- In this network config we don't need any additional setup as truffle itself is generating fake blockchain network locally and thus truffle will fake signature generation for all trasactions.
+
+- You can use this way to debug your code and that's why mainly you will end up using ganache network during your debugging phase.
+
+- Although we can use truffle's another product to monitor each and every transaction of ganache network, that is Ganache.
+
+- Follow [this section](#setup-truffle-ganache) to setup Ganache app inside your local machine.
 
 #### Using Test Network (Like Goerli) or Real Etherium Network
 
@@ -247,11 +255,40 @@ Only executing `truffle migrate` will deploy contract inside development network
 
 - After setting up Dashboard. Keep dashboard running in Terminal and from other terminal run following.
 
-`truffle migrate --network dashboard`
+  `truffle migrate --network dashboard`
 
 - Above command will run all migration files and if you are performing transaction inside migrations file then truffle will prompt you to authorize transaction via truffle dashboard GUI and authorizing transaction will create signature and then you will receive final confirmation from metamask wallet with transaction info.
 
 - Confirming transaction from wallet will complete the transaction.
+
+### Setup Truffle Ganache
+
+- [What is Ganache?](https://trufflesuite.com/docs/ganache/#what-is-ganache)
+
+- To setup Ganache app, first download Ganache for your local machine from [here](https://trufflesuite.com/ganache).
+
+- After installing app, open the app and then you will be greeted with 2 options.
+
+1. Quickstart
+2. New Workspace
+
+- On the same screen you will also get suggestion for workspace if you have created workspace previously. So below steps are only needed one time per truffle project. (i.e. Each truffle project will get its own workspace)
+
+- But for the first time, you have to go with option `New Workspace`.
+
+- After clicking on `New Workspace`, you will need to set name of workspace, name of workspace is completely upto you.
+
+- But for Tuffle Projects, you will have to add `truffle-config.js` file of your truffle projects.
+
+- You can add multiple `truffle-config.js` files in same workspace i.e. You can link your multiple projects with same workspace.
+
+- After linking truffle projects and naming project. click on `Save Workspace`.
+
+- This will create local blockchain network with 10 fake accounts with various debugging tools.
+
+- Now you can deploy your linked truffle project inside this network by simply doing `truffle migrate`.
+
+- Explore [Ganache Documentation](https://trufflesuite.com/docs/ganache/) for more information.
 
 ### Setup Truffle Dashboard
 
@@ -259,30 +296,30 @@ Only executing `truffle migrate` will deploy contract inside development network
 - One way to interact with contract deployed inside real ETH Network or Testnet (like Goerli) is using truffle dashboard.
 - To setup truffle dashboard, first we need to specify network config for dahsboard and to do that, we have to add `dashboard` config inside networks array like this.
 
-```
-dashboard: {
-      port: 24012
-    },
-```
+  ```
+  dashboard: {
+        port: 24012
+      },
+  ```
 
 - Now run following command to start Dashboard GUI into localhost.
 
-`truffle dashboard`
+  `truffle dashboard`
 
 - Above command will start dashboard server in localhost with port 24012 and after that you can access Dashboard GUI using url link given below.
 
-`http://127.0.0.1:24012/rpcs`
+  `http://127.0.0.1:24012/rpcs`
 
 - Inside Dashboard GUI on bottom left corner you will get button with `click to connect` written on it. by clicking on that button, dashboard will recognize metamask wallet you are using and inside metamask you will get confirmation. confirming all dialogues in metamask wallet will grant access of your secret code to dashboard and that secret will be then used by dashboard itself to create valid signature to attach with transactions.
 
 - Your defined newtork config will be used if you use `dashboard` name and due to that you can simply migrate using config name `dashboard` without specifying port number or any other network properties like this.
 
-`truffle migrate --network dashboard`
+  `truffle migrate --network dashboard`
 
-- Above command will migrate your contract inside newtork you have connected your dashboard in
+- Above command will migrate your contract inside newtork you have connected your dashboard in.
 
 # Useful Docs
 
-1. [Truffle](https://trufflesuite.com/docs/truffle/)
+1. [Truffle Suite](https://trufflesuite.com/docs/)
 2. [openZeppelin](https://docs.openzeppelin.com/contracts/4.x/) for smart contract management.
 3. [OpenSea](https://docs.opensea.io/) for NFT marketplace management.
