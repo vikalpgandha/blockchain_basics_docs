@@ -42,13 +42,33 @@ This Documentation lists all steps to learn about basic blockchain techonology a
 
 8. Introduction to Remix IDE: [2:01:17](https://youtu.be/gyMwXuJrbJQ?t=7277) - [2:05:22](https://youtu.be/gyMwXuJrbJQ?t=7522)
 
-9. Solidity Basics: [2:05:24](https://youtu.be/gyMwXuJrbJQ?t=7524) - [5:30:39](https://youtu.be/gyMwXuJrbJQ?t=19838). In this section you don't have to learn about Oracle Problem and Oracle Network as it is not import part and less used part here.
+9. Solidity Basics: [2:05:24](https://youtu.be/gyMwXuJrbJQ?t=7524) - [3:42:30](https://youtu.be/gyMwXuJrbJQ?t=13355) and [4:09:10](https://youtu.be/gyMwXuJrbJQ?t=14950) - [5:30:00](https://youtu.be/gyMwXuJrbJQ?t=21180) In this section you don't have to learn about Oracle Problem and Oracle Network as it is less used concept in our projects so that part is excluded here. Though you can visit that section (Time Stamp 3:43 - 4.09) in future as it is not obsolete part afterall.
 
-10. [Setup Truffle](#setup-truffle) in Local Machine
+10. [Prepare VSCode for Solidity](#prepare-vscode-for-truffle-and-solidity).
 
-11. [Basic Overview of Truffle Project](#understanding-truffle-project-structure)
+From Steps 11 and onwards, VSCode will be used to interact with contract using JavaScript inside Local machine.
 
-12. [Use Truffle](#how-to-use-truffle) in Local Machine
+11. Basics of [web3.js](https://youtube.com/playlist?list=PLgPmWS2dQHW8Ev0iC0zyBLikUSV-A22rC)
+
+12. Introduction to [ERC/ERP](https://www.youtube.com/watch?v=-cknquI5LGA).
+
+13. Introduction to [openzeppelin](https://www.youtube.com/watch?v=6jgRN9VM08A).
+
+14. Introduction to [ERC721-NFT](https://www.youtube.com/watch?v=QFYU81zM_jA).
+
+15. Deploy Your First [NFT](https://www.youtube.com/watch?v=veBu03A6ptw).
+
+Normally you will use Truffle to deploy contracts in various blockchain network and initial interaction with contracts.
+
+16. [Setup Truffle](#setup-truffle) in Local Machine
+
+17. [Basic Truffle Playlist](https://youtube.com/playlist?list=PLgPmWS2dQHW9F8fRXzrFBtcrwE-uS8Qa5) 
+
+Above playlist will cover basics of Truffle and next 2 steps is just basic documentation of Truffle which can be used for refresh the concepts
+
+18. [Basic Overview of Truffle Project](#understanding-truffle-project-structure)
+
+1. [Use Truffle](#how-to-use-truffle) in Local Machine.
 
 # Setup Truffle
 
