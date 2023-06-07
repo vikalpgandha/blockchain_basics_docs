@@ -18,11 +18,11 @@ This Documentation lists all steps to learn about basic blockchain techonology a
 
 - This documentation will mainly follow Etherium Blockchain Network.
 
-- Along with documentation, There is also one demo project inside this github repo. This project will give indepth understanding on how to get started with truffle as demo project is created using `truffle init` command.
+- Along with documentation, There is also one demo project inside this github repo. This project will give basic understanding on how to get started with hardhat as demo project is created using `npx hardhat` command.
 
 - To setup project in your local machine, clone this repository, open terminal inside root of project and then run following command to install all dependencies `npm i`.
 
-- Addtiionally Truffle needs tobe installed saperately by following [this guide](#setup-truffle) to make demo project fully functional.
+- To Run above project, you will need to create .env file in your local machine. find .demo.env file in this project to find which variable needs in order to run this project. Get Alchemy API Key using [thid video](https://youtu.be/tfggWxfG9o0)
 
 # Route to follow for Complete Beginners
 
@@ -44,35 +44,22 @@ This Documentation lists all steps to learn about basic blockchain techonology a
 
 9. Solidity Basics: [2:05:24](https://youtu.be/gyMwXuJrbJQ?t=7524) - [3:42:30](https://youtu.be/gyMwXuJrbJQ?t=13355) and [4:09:10](https://youtu.be/gyMwXuJrbJQ?t=14950) - [5:30:00](https://youtu.be/gyMwXuJrbJQ?t=21180) In this section you don't have to learn about Oracle Problem and Oracle Network as it is less used concept in our projects so that part is excluded here. Though you can visit that section (Time Stamp 3:43 - 4.09) in future as it is not obsolete part afterall.
 
-10. [Prepare VSCode for Solidity](#prepare-vscode-for-truffle-and-solidity).
+10. Introduction to [ERC/ERP](https://www.youtube.com/watch?v=-cknquI5LGA).
 
-From Steps 11 and onwards, VSCode will be used to interact with contract using JavaScript inside Local machine.
+11. Introduction to [openzeppelin](https://www.youtube.com/watch?v=6jgRN9VM08A).
 
-11. Basics of [web3.js](https://youtube.com/playlist?list=PLgPmWS2dQHW8Ev0iC0zyBLikUSV-A22rC)
+12. Introduction to [ERC721-NFT](https://www.youtube.com/watch?v=QFYU81zM_jA).
 
-12. Introduction to [ERC/ERP](https://www.youtube.com/watch?v=-cknquI5LGA).
+13. Deploy Your First [NFT](https://www.youtube.com/watch?v=veBu03A6ptw).
 
-13. Introduction to [openzeppelin](https://www.youtube.com/watch?v=6jgRN9VM08A).
+From Steps 14 and onwards, VSCode will be used to interact with contract using JavaScript inside Local machine.
 
-14. Introduction to [ERC721-NFT](https://www.youtube.com/watch?v=QFYU81zM_jA).
+14. Basics of ethers.js [5:30:47](https://www.youtube.com/watch?v=gyMwXuJrbJQ&t=93029s) - [8:17:00](https://youtu.be/gyMwXuJrbJQ?t=29820)
 
-15. Deploy Your First [NFT](https://www.youtube.com/watch?v=veBu03A6ptw).
+Normally you will use Hardhat to deploy contracts in various blockchain network and initial interaction with contracts.
 
-Normally you will use Truffle to deploy contracts in various blockchain network and initial interaction with contracts.
+15. Introduction to Hardhat (By SimpleStorage Project) [8:20:18](https://youtu.be/gyMwXuJrbJQ?t=30018) : [9:26:00](https://youtu.be/gyMwXuJrbJQ?t=33975)
 
-16. [Setup Truffle](#setup-truffle) in Local Machine
-
-17. [Basic Truffle Playlist](https://youtube.com/playlist?list=PLgPmWS2dQHW9F8fRXzrFBtcrwE-uS8Qa5) 
-
-Above playlist will cover basics of Truffle and next 2 steps is just basic documentation of Truffle which can be used for refresh the concepts
-
-18. [Basic Overview of Truffle Project](#understanding-truffle-project-structure)
-
-1. [Use Truffle](#how-to-use-truffle) in Local Machine.
-
-# Setup Truffle
-
-- [What is Truffle?](https://trufflesuite.com/docs/truffle/)
 
 ### Prerequisite
 
@@ -86,309 +73,95 @@ Above playlist will cover basics of Truffle and next 2 steps is just basic docum
 
 - Open Command Prompt / Powershell with Administration Previllages.
 
-- Install Truffle using NPM by typing code `npm install -g truffle`
+- Install Hardhat using NPM by typing code `npm i --save-dev hardhat`
 
-- Verify truffle version `truffle version`
+- Verify hardhat Installation `npx hardhat`
 
-### Prepare VSCode for Truffle and Solidity
+### Prepare VSCode for Hardhat and Solidity
 
-- Solidity Language is not supported in VSCode by default. So you won't get any suggestion while coding and code will be displayed as plain white text. To make solidity recognizable and supported in VSCode, we need to install extension in VSCode named Solidity by Juan Blanco.
+- Solidity Language is not supported in VSCode by default. So you won't get any suggestion while coding and code will be displayed as plain white text. To make solidity recognizable and supported in VSCode, you need to install extension in VSCode named Solidity by NomicFoundation.
 
-- To install solidity extention, goto Extensions Tab from right bar and then search for following keyword `JuanBlanco.solidity` which will bring matching result for that ID. Install first result named 'solidity' by 'Juan Blanco'
+- To install solidity extention, goto Extensions Tab from right bar and then search for following keyword `NomicFoundation.hardhat-solidity` which will bring matching result for that ID. Install first result named 'solidity' by 'NomicFoundation'
 
-- In modern Windows (which comes with Powershell) truffle may not run using VSCode's default Windows Terminal due to enforced Restriction Policy to execute .ps1 files. In that case running truffle may result in PSSecurityException error. Switching default terminal from Powershell to either Command Prompt or git bash will help here.
+- For deployment there is script provided in deploy folder. That deploy scripts relies on other package. install it by using below command
 
-# Understanding Truffle Project Structure
+  `npm i --save-dev hardhat-deploy`
 
-- After executing `truffle init` inside newly created folder, You will get following important directories and files
+- This project is using modified version of ethers for contract interaction scripts (files in scripts folder) you can install that package by below command.
 
-1. `contracts` (Directory)
-2. `migrations` (Directory)
-3. `tests` (Directory)
-4. `truffle-config.js`
+  `npm i --save-dev @nomiclabs/hardhat-ethers`
 
-- You will understand use of each directory or file inshort one by one.
+- If you want to use this repo's hardhat.config.js as a base for all future projects, don't forget to install additional package which is used in that config files
 
-### contracts
-
-`contracts` folder is folder which will contain all contracts writtent in solidity language (`.sol`).
-Truffle will compile all solidity files which is placed inside this folder when we instruct truffle to compile.
-
-### migrations
-
-`migrations` is folder where we provide instruction to truffle on how to deploy contract and what to deploy from all our compiled contracts.
-
-All files inside this will let us customize deployment of contracts from all our compiled contracts and what to do after deploying contracts.
-
-Apparently you can do anything with our contract as you can get access to contract instance inside migration file and after that you can perform transactions and calls.
-
-All files inside this folder will be written in JavaScript Language.
-
-[How to write migration file?](#truffle-migration-files)
-
-### test
-
-`test` folder will contain all the test files which can perform several tests on contracts.
-
-### truffle-config.js
-
-This file is very important file. which will contain all the configuration we can change or add.
-
-This will be writtent in JavaScript and using this file, we can configure various networks, change solidity compiler version etc.
-
-[How to use truffle-config.js?](#use-truffle-configjs)
-
-# How to Use Truffle?
-
-- This section will give extremely basic overview on How to deploy and interact with contract using truffle inside Local Machine
-
-### Truffle Migration Files
-
-- These files are located inside migrations folder.
-
-- These files will get executed if we run `truffle migrate` and it makes possible to interect with contract using JavaScript.
-
-- We can divide code of migration files into 2 parts.
-
-1. Part which deploys contracts into Network.
-2. Another part which will come after deployment and that part will interect with cotracts by executing transaction and other calls.
-
-```
-const MyContract = artifacts.require("SimpleStorage");
-module.exports = function(deployer) {
-  deployer.deploy(MyContract);
-
-  < -- Code which interects with contract below -- >
-
-  const instance = await MyContract.deployed();
-  await instance.addPerson('Vikalp', 85)
-  await instance.store(95)
-  const data = await instance.retrieve();
-  console.log('data',data.words[0]);
-};
-```
-
-#### Cotract Deployment Part
-
-- Here is basic code of migration file which deploys contract named SimpleStorage inside specified network.
-
-  ```
-  const MyContract = artifacts.require("SimpleStorage");
-
-  module.exports = function(deployer) {
-    deployer.deploy(MyContract);
-
-    < -- Contract Interaction code -- >
-  };
-  ```
-
-- Here we are creating variable named `MyContract` which will be of type contract and then we will assign `artifacts.require('SimpleStorage')` to that variable.
-
-- `artifacts` will be generated after truffle compiles all solidty files and that will contain all the contracts.
-
-- We can instruct truffle to deploy only specific contract using `artifacts.require(<NameOfContract>)`
-
-- `artifacts.require('SimpleStorage')` will grab contract named `SimpleStorage` from generated artifacts and then it will return that contract. which will be stored inside variable we assigned.
-
-- Next part of code is function we are exporting and that will be executed by truffle.
-
-- truffle will provide `deployer` method as argument and using that we can deploy contract stored inside variable `deployer.deploy(MyContract)`
-
-#### Contract Interaction Part
-
-- Here is part of code which is interating with deployed contract stored inside `MyContract` variable.
-
-  ```
-  let MyContract;
-
-  < -- Contract Deployment Instrouctions -- >
-
-  module.exports = async function(deployer) {
-    deployer.deploy(MyContract);  --> Deploys the contract
-
-    const instance = await MyContract.deployed();
-    await instance.addPerson('Vikalp', 85)
-    await instance.store(95)
-    const data = await instance.retrieve();
-    console.log('data',data.words[0]);
-  };
-  ```
-
-- Line `const instance = await MyContract.deployed()` is creating and storing instance of deployed `MyContract` inside specified network. This line will give you the access of contract inside blockchain network.
-
-- Now you can use this instance to interect with contract. for example, line `await instance.addPerson('Vikalp', 85)` is executing `addPerson` function with 2 arguments ('Vikalp', 85). explore `SimpleStorage.sol` file inside this repo to get information on what this function is doing.
-
-- Next line is also doing same task as above but instead of executing `addPerson` it executes `store` function.
-
-- We can also get access to returned data by using assignement as done in line `const data = await instance.retrieve()`
-
-- One thing to remember is that regradless of nature of function (Transaction or Normal Function) you will not find any difference in execution of any type of function.
-
-  That's basic explenation on how we can write and use migration file.
-
-- Naming Convention of truffle migration file must be followed in order to make migration work.
-
-  `1_SimpleStorage.js` -> `<index>_<identifier>.js`
-
-- Name must start with number and number of all migration files should be unique. except that we can choose any identifier and that's completely upto you.
-
-- Explore `SimpleStorage.sol` inside contracts folder to see all available interecations with contract.
-
-### Use truffle-config.js
-
-```
-module.exports = {
-    <All configs here>
-}
-```
-
-- Major Use cases of this config file
-
-1. Setup Solidity compiler
-
-```
-compilers: {
-    solc: {
-      version: "0.8.13",      // Fetch exact version from solc-bin
-    }
-  }
-```
-
-- Here you can configure Solidity compiler like defining version, which will be used by truffle to compile solidty files.
-- All mentioned versions of compiler will be downloaded and used by truffle automatically.
-
-2. Setup Network
-
-- This configuration object is used to define various network configuration.
-
-- In all network configs `development` name is special - truffle uses it by default if it's defined here and no other network is specified at the command line.
-
-- You should run a client (like ganache, geth, or parity) in a separate terminal tab if you use this network and you must also set the `host`, `port` and `network_id`.
-
-- Another network configuration we are gonna use here is `dashboard` configuration.
-
-- Truffle provides us way to make interection possible inside Test networks or real networks using Truffle Dashboard and to use truffle dashboard, dashboard config is necessary to setup here.
-
-- Explore `truffle-config.js` file of this repo to get more info.
-
-  ```
-  networks: {
-      development: {
-        host: "127.0.0.1",
-        port: 7545,
-        network_id: 5777
-      },
-
-      dashboard: {
-        port: 24012
-      },
-    }
-  ```
-
-- For more and indepht information on how to use this config file, [go here](https://trufflesuite.com/docs/truffle/reference/configuration/)
+  `npm i --save-dev hardhat-deploy hardhat-contract-sizer hardhat-gas-reporter @nomiclabs/hardhat-etherscan @nomiclabs/hardhat-ethers`
 
 ### Compile all Solidity files
 
-Truffle will compile all solidity files from contracts folder if you run `truffle migrate`
+Hardhat will compile all solidity files from contracts folder if you run `npx hardhat compile`
 
 ### Deploy Contract in Specific Network
 
-After defining network inside `truffle-config.js` you can deploy that contract inside that network like this
-`truffle migrate --network <name of network>`
+- First you have to write deploment scripts for specific contract. Refer to the script provided in this repo for rough idea on how to create deployment script.
 
-Only executing `truffle migrate` will deploy contract inside development network.
+- After creating script and defining network inside `hardhat.config.js` you can deploy that contract inside that network like this
+ 
+  `npx hardhat deploy --network <name of network>`
 
-### Interect with Deployed Contract
+- Above command will execute all scripts inside `deploy` folder. to deploy specific contract pass tag name in command like this
+  
+  `npx hardhat deploy --tags <TagName Of Script> --network <Name of Network>`
 
-- As explained in [Truffle Migration File Section](#truffle-migration-files) you can write code to execute transactions and execute calls inside migration files.
+- As you can see in `SimpleStorage.js` script inside deploy folder. You can define tag name of your every deploy script as shown below.
+
+  `module.exports.tags = ["all", "any-name-of-script"]`
+
+  Put above line at the end of script.
+
+- Explore this project's hardhat.config.js to get information on how to setup network.
+<!-- Only executing `truffle migrate` will deploy contract inside development network. -->
+
+### Interact with Deployed Contract
+
+- you can write code to execute transactions and execute calls inside scripts folder.
 
 - But As transaction requires signature generation of transaction creator and also access to specific EVM Network to insert contracts in, we may need to perform additional steps depending on which network config you used to deploy contract.
 
-#### Using Truffle's Fake Ganache Network (`truffle migrate` || `truffle migrate --network development`)
+#### Using Test Network (Like Mumbai Matic) or Real Etherium Network
 
-- If We execute `truffle migrate` without specifiying network config, truffle will deploy contract using `development` configs.
+- For interacting with real ETH or Test Network, We need to define network configuration of network we want to interact contract in.
 
-- In this network config we don't need any additional setup as truffle itself is generating fake blockchain network locally and thus truffle will fake signature generation for all trasactions.
+- Explore `hardhat.config.js` to find out how to setup network.
 
-- You can use this way to debug your code and that's why mainly you will end up using ganache network during your debugging phase.
+- After configuring `hardhat.config.js` run below command to run specific script in specific network
 
-- Although we can use truffle's another product to monitor each and every transaction of ganache network, that is Ganache.
+  `npx hardhat run scripts/<NameOfScriptFile>.js --network <NameOfNetwork>`
 
-- Follow [this section](#setup-truffle-ganache) to setup Ganache app inside your local machine.
+- For example if you want to run script `storeData.js` of this repo you can run below command to interact with already deployed contract in mumbai network like below
 
-#### Using Test Network (Like Goerli) or Real Etherium Network
+  `npx hardhat run scripts/storeData.js --network mumbai`
 
-- For interecting with real ETH or Test Network, We are gonna use Truffle dashboard.
+#### Using Hardhat Local Network
 
-- Goto [Setup Truffle Dashboard](#setup-truffle-dashboard) Section to setup and get started with Truffle Dashboard.
+- Whenever you will start your new project. You initially want to test contracts extensively or you will need access to more debugging tool (Like console.log of hardhat) and more information about how your contract behaves in blockchain network. 
 
-- After setting up Dashboard. Keep dashboard running in Terminal and from other terminal run following.
+- You can test everything in Testnet like Sepolia or Mumbai MATIC, but you won't be able to debug contract extensively (you won't be able to use console.log in solidity and you won't be able to salvage more information also) and you will get very limited blockchain currency to use and it will be also slow to work with as it will take some time to execute functions and so on.
 
-  `truffle migrate --network dashboard`
+- In that case it is preffered to use local network of hardhat to debug contract. which gives us access to lots of debugging tools and information including console.log in solidity files.
 
-- Above command will run all migration files and if you are performing transaction inside migrations file then truffle will prompt you to authorize transaction via truffle dashboard GUI and authorizing transaction will create signature and then you will receive final confirmation from metamask wallet with transaction info.
+- To use local network first you have to add configuration for localhost in `hardhat.config.js`. See `localhost` network config of this repo's `hardhat.config.js` to get config of localhost.
 
-- Confirming transaction from wallet will complete the transaction.
+- After configuring localhost network you can start local network by below command
 
-### Setup Truffle Ganache
+  `npx hardhat node` 
 
-- [What is Ganache?](https://trufflesuite.com/docs/ganache/#what-is-ganache)
+- Above command will run all deploy scripts and then gives us access to 20 fake hardhat accounts to play with
 
-- To setup Ganache app, first download Ganache for your local machine from [here](https://trufflesuite.com/ganache).
+- For deployment and interaction you can use same command mentioned above and network name will be `localhost` for that command
 
-- After installing app, open the app and then you will be greeted with 2 options.
-
-1. Quickstart
-2. New Workspace
-
-- On the same screen you will also get suggestion for workspace if you have created workspace previously. So below steps are only needed one time per truffle project. (i.e. Each truffle project will get its own workspace)
-
-- But for the first time, you have to go with option `New Workspace`.
-
-- After clicking on `New Workspace`, you will need to set name of workspace, name of workspace is completely upto you.
-
-- But for Tuffle Projects, you will have to add `truffle-config.js` file of your truffle projects.
-
-- You can add multiple `truffle-config.js` files in same workspace i.e. You can link your multiple projects with same workspace.
-
-- After linking truffle projects and naming workspace. click on `Save Workspace`.
-
-- This will create local blockchain network with 10 fake accounts and various debugging tools.
-
-- Now you can deploy your linked truffle project inside this network by simply doing `truffle migrate`.
-
-- Explore [Ganache Documentation](https://trufflesuite.com/docs/ganache/) for more information.
-
-### Setup Truffle Dashboard
-
-- [What is Truffle Dashboard?](https://trufflesuite.com/docs/truffle/how-to/use-the-truffle-dashboard/)
-- One way to interact with contract deployed inside real ETH Network or Testnet (like Goerli) is using truffle dashboard.
-- To setup truffle dashboard, first we need to specify network config for dahsboard and to do that, we have to add `dashboard` config inside networks array like this.
-
-  ```
-  dashboard: {
-        port: 24012
-      },
-  ```
-
-- Now run following command to start Dashboard GUI into localhost.
-
-  `truffle dashboard`
-
-- Above command will start dashboard server in localhost with port 24012 and after that you can access Dashboard GUI using url link given below.
-
-  `http://127.0.0.1:24012/rpcs`
-
-- Inside Dashboard GUI on bottom left corner you will get button with `click to connect` written on it. by clicking on that button, dashboard will recognize metamask wallet you are using and inside metamask you will get confirmation. confirming all dialogues in metamask wallet will grant access of your secret code to dashboard and that secret will be then used by dashboard itself to create valid signature to attach with transactions.
-
-- Your defined newtork config will be used if you use `dashboard` name and due to that you can simply migrate using config name `dashboard` without specifying port number or any other network properties like this.
-
-  `truffle migrate --network dashboard`
-
-- Above command will migrate your contract inside newtork you have connected your dashboard in.
+  `npx hardhat deploy --network localhost`
 
 # Useful Docs
 
-1. [Truffle Suite](https://trufflesuite.com/docs/)
+1. [Hardhat Docs](https://hardhat.org/docs)
 2. [openZeppelin](https://docs.openzeppelin.com/contracts/4.x/) for smart contract management.
 3. [OpenSea](https://docs.opensea.io/) for NFT marketplace management.

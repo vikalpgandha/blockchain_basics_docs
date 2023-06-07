@@ -1,0 +1,218 @@
+{
+  "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "add",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_name",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_favoriteNumber",
+          "type": "uint256"
+        }
+      ],
+      "name": "addPerson",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "name": "nameToFavNum",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "people",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "favoriteNumber",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "retrieve",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_favoriteNumber",
+          "type": "uint256"
+        }
+      ],
+      "name": "store",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x10747debb833d6927ff57cdb45986086ca7290a1c987c5dbfb08bad5fa5a68b7",
+  "receipt": {
+    "to": null,
+    "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "contractAddress": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+    "transactionIndex": 0,
+    "gasUsed": "355399",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x52b92abbd661a9d6266887daf61de72cc383854439b72d12247e7c93ae645c44",
+    "transactionHash": "0x10747debb833d6927ff57cdb45986086ca7290a1c987c5dbfb08bad5fa5a68b7",
+    "logs": [],
+    "blockNumber": 1,
+    "cumulativeGasUsed": "355399",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "3fa102f8f1f09a736f77f94de9799565",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.18+commit.87f61d96\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"add\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_favoriteNumber\",\"type\":\"uint256\"}],\"name\":\"addPerson\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"name\":\"nameToFavNum\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"people\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"favoriteNumber\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"retrieve\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_favoriteNumber\",\"type\":\"uint256\"}],\"name\":\"store\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/SimpleStorage.sol\":\"SimpleStorage\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":1},\"remappings\":[],\"viaIR\":true},\"sources\":{\"contracts/SimpleStorage.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\npragma solidity ^0.8.7;\\r\\n\\r\\ncontract SimpleStorage {\\r\\n    uint256 favoriteNumber;\\r\\n    \\r\\n    struct People {\\r\\n        uint256 favoriteNumber;\\r\\n        string name;\\r\\n    }\\r\\n\\r\\n    mapping(string => uint256) public nameToFavNum;\\r\\n\\r\\n    People[] public people;\\r\\n    \\r\\n    function addPerson(string memory _name, uint256 _favoriteNumber) public {\\r\\n        people.push(People(_favoriteNumber, _name));\\r\\n        nameToFavNum[_name] = _favoriteNumber;\\r\\n    }\\r\\n\\r\\n    function store(uint256 _favoriteNumber) public virtual {\\r\\n        favoriteNumber = _favoriteNumber;\\r\\n    }\\r\\n\\r\\n    function retrieve() public view returns(uint256){\\r\\n        return favoriteNumber;\\r\\n    }\\r\\n\\r\\n    function add() public pure returns(uint256){\\r\\n        return 555+1;\\r\\n    }\\r\\n}\\r\\n\",\"keccak256\":\"0x053efdd441b63ae604648295d5f14f28f443c88de77dea289bb30d7bf0fde874\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x6080806040523461001657610576908161001c8239f35b600080fdfe6040608081526004908136101561001557600080fd5b6000803560e01c806306c62c2c146103bf5780632e64cec1146103a25780634f2be91f146103855780636057361d1461036c5780636f760f411461016657639e7a13ad1461006257600080fd5b34610163576020928360031936011261015f573560025481101561015f57610089906104d1565b50908154916001809101908585519284928154956100a687610506565b9283875284870197838116908160001461013c5750600114610103575b8460608a8a6100f58e8c6100d9818e038261041a565b81805197889687528601525192838092860152858501906104ae565b601f01601f19168101030190f35b9080949550528383205b82841061012957505050820101856100d98360606100f56100c3565b805486850186015292840192810161010d565b60ff1916895250505050151560051b8301019050856100d98360606100f56100c3565b5080fd5b80fd5b5091346103685781600319360112610368576001600160401b03908035828111610364576101979036908301610453565b9060243593805191818301838110868211176103515782528583526020948584019185835260025494600160401b86101561033e576101dd6001968781016002556104d1565b91909161032c5790869151815501925190815192831161031957506102028354610506565b601f81116102d3575b508690601f831160011461026a5791808897969593926102529995938c9261025f575b5050600019600383901b1c191690851b1790555b51948386809551938492016104ae565b8201908152030190205580f35b01519050388061022e565b838a52878a209190601f1984168b5b8181106102be57509287969491928a999893836102529c9896106102a5575b505050811b019055610242565b015160001960f88460031b161c19169055388080610298565b82840151855593880193928a01928a01610279565b838a52878a20601f840160051c81019189851061030f575b601f0160051c019086905b82811061030457505061020b565b8b81550186906102f6565b90915081906102eb565b634e487b7160e01b8a5260419052602489fd5b634e487b7160e01b8b528a835260248bfd5b634e487b7160e01b8a526041825260248afd5b634e487b7160e01b885260418252602488fd5b8480fd5b8280fd5b50823461015f57602036600319011261015f5735815580f35b50903461015f578160031936011261015f576020905161022c8152f35b50903461015f578160031936011261015f57602091549051908152f35b5034610163576020366003190112610163578235906001600160401b038211610163575060206103f6819461040893369101610453565b818451938285809451938492016104ae565b81016001815203019020549051908152f35b601f909101601f19168101906001600160401b0382119082101761043d57604052565b634e487b7160e01b600052604160045260246000fd5b81601f820112156104a9578035906001600160401b03821161043d5760405192610487601f8401601f19166020018561041a565b828452602083830101116104a957816000926020809301838601378301015290565b600080fd5b60005b8381106104c15750506000910152565b81810151838201526020016104b1565b6002548110156104f057600260005260206000209060011b0190600090565b634e487b7160e01b600052603260045260246000fd5b90600182811c92168015610536575b602083101461052057565b634e487b7160e01b600052602260045260246000fd5b91607f169161051556fea26469706673582212206d46c1b74ab82770052b083ed24520c16686fbb70747562b3e6ee0fc5e60f26564736f6c63430008120033",
+  "deployedBytecode": "0x6040608081526004908136101561001557600080fd5b6000803560e01c806306c62c2c146103bf5780632e64cec1146103a25780634f2be91f146103855780636057361d1461036c5780636f760f411461016657639e7a13ad1461006257600080fd5b34610163576020928360031936011261015f573560025481101561015f57610089906104d1565b50908154916001809101908585519284928154956100a687610506565b9283875284870197838116908160001461013c5750600114610103575b8460608a8a6100f58e8c6100d9818e038261041a565b81805197889687528601525192838092860152858501906104ae565b601f01601f19168101030190f35b9080949550528383205b82841061012957505050820101856100d98360606100f56100c3565b805486850186015292840192810161010d565b60ff1916895250505050151560051b8301019050856100d98360606100f56100c3565b5080fd5b80fd5b5091346103685781600319360112610368576001600160401b03908035828111610364576101979036908301610453565b9060243593805191818301838110868211176103515782528583526020948584019185835260025494600160401b86101561033e576101dd6001968781016002556104d1565b91909161032c5790869151815501925190815192831161031957506102028354610506565b601f81116102d3575b508690601f831160011461026a5791808897969593926102529995938c9261025f575b5050600019600383901b1c191690851b1790555b51948386809551938492016104ae565b8201908152030190205580f35b01519050388061022e565b838a52878a209190601f1984168b5b8181106102be57509287969491928a999893836102529c9896106102a5575b505050811b019055610242565b015160001960f88460031b161c19169055388080610298565b82840151855593880193928a01928a01610279565b838a52878a20601f840160051c81019189851061030f575b601f0160051c019086905b82811061030457505061020b565b8b81550186906102f6565b90915081906102eb565b634e487b7160e01b8a5260419052602489fd5b634e487b7160e01b8b528a835260248bfd5b634e487b7160e01b8a526041825260248afd5b634e487b7160e01b885260418252602488fd5b8480fd5b8280fd5b50823461015f57602036600319011261015f5735815580f35b50903461015f578160031936011261015f576020905161022c8152f35b50903461015f578160031936011261015f57602091549051908152f35b5034610163576020366003190112610163578235906001600160401b038211610163575060206103f6819461040893369101610453565b818451938285809451938492016104ae565b81016001815203019020549051908152f35b601f909101601f19168101906001600160401b0382119082101761043d57604052565b634e487b7160e01b600052604160045260246000fd5b81601f820112156104a9578035906001600160401b03821161043d5760405192610487601f8401601f19166020018561041a565b828452602083830101116104a957816000926020809301838601378301015290565b600080fd5b60005b8381106104c15750506000910152565b81810151838201526020016104b1565b6002548110156104f057600260005260206000209060011b0190600090565b634e487b7160e01b600052603260045260246000fd5b90600182811c92168015610536575b602083101461052057565b634e487b7160e01b600052602260045260246000fd5b91607f169161051556fea26469706673582212206d46c1b74ab82770052b083ed24520c16686fbb70747562b3e6ee0fc5e60f26564736f6c63430008120033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 3,
+        "contract": "contracts/SimpleStorage.sol:SimpleStorage",
+        "label": "favoriteNumber",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 12,
+        "contract": "contracts/SimpleStorage.sol:SimpleStorage",
+        "label": "nameToFavNum",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_mapping(t_string_memory_ptr,t_uint256)"
+      },
+      {
+        "astId": 16,
+        "contract": "contracts/SimpleStorage.sol:SimpleStorage",
+        "label": "people",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_array(t_struct(People)8_storage)dyn_storage"
+      }
+    ],
+    "types": {
+      "t_array(t_struct(People)8_storage)dyn_storage": {
+        "base": "t_struct(People)8_storage",
+        "encoding": "dynamic_array",
+        "label": "struct SimpleStorage.People[]",
+        "numberOfBytes": "32"
+      },
+      "t_mapping(t_string_memory_ptr,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_string_memory_ptr",
+        "label": "mapping(string => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_string_memory_ptr": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_struct(People)8_storage": {
+        "encoding": "inplace",
+        "label": "struct SimpleStorage.People",
+        "members": [
+          {
+            "astId": 5,
+            "contract": "contracts/SimpleStorage.sol:SimpleStorage",
+            "label": "favoriteNumber",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 7,
+            "contract": "contracts/SimpleStorage.sol:SimpleStorage",
+            "label": "name",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_string_storage"
+          }
+        ],
+        "numberOfBytes": "64"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}
